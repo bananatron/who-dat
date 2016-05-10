@@ -1,78 +1,62 @@
 "use strict";
-
-// Helpers
-
-//TODO we don't want to trigger this on change, but on submit
-document.getElementById("file-upload").addEventListener('change', handleFileSelect, false);
-
-function handleFileSelect(evt) {
-  console.log('File upload starting...');
-
-  var f = evt.target.files[0];
-  var reader = new FileReader();
-  reader.onload = (function(theFile) {
-    return function(e) {
-      var filePayload = e.target.result;
-      $('#file-upload').hide();
-      // Generate a location that can't be guessed using the file's contents and a random number
-      // var hash = CryptoJS.SHA256(Math.random() + CryptoJS.SHA256(filePayload));
-      // var f = new Firebase(firebaseRef + 'pano/' + hash + '/filePayload');
-      // spinner.spin(document.getElementById('spin'));
-      // Set the file payload to Firebase and register an onComplete handler to stop the spinner and show the preview
-      fb.child('lol').set(filePayload, function() {
-        // spinner.stop();
-        console.log('Uploaded');
-        // document.getElementById("pano").src = e.target.result;
-        $()
-        // Update the location bar so the URL can be shared with others
-        // window.location.hash = hash;
-      });
-    };
-  })(f);
-  reader.readAsDataURL(f);
-}
-
-var createCookie = function(name,value,days) {
-  if (days) {
-      var date = new Date();
-      date.setTime(date.getTime()+(days*24*60*60*1000));
-      var expires = "; expires="+date.toGMTString();
-  }
-  else var expires = "";
-  document.cookie = name+"="+value+expires+"; path=/";
-}
-
-var readCookie = function(name) {
-  var nameEQ = name + "=";
-  var ca = document.cookie.split(';');
-  for(var i=0;i < ca.length;i++) {
-      var c = ca[i];
-      while (c.charAt(0)==' ') c = c.substring(1,c.length);
-      if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
-  }
-  return null;
-}
-
-var eraseCookie = function(name) {
-  createCookie(name,"",-1);
-}
-
-
-
-
-
-
-
-
-
-
 var fb = new Firebase('https://who-is-dat.firebaseio.com');
+
+
+// Get user key is present
+if (readCookie("name_key")) var name_key = readCookie("name_key");
+
+
+
+$("#profile-link").on("click", function(ee){
+  ee.preventDefault();
+  
+  if (name_key){ // Profile link will take user to their profile if logged in
+    window.location.href = "/face/" + name_key;
+  } else { // If they aren't logged in, take them to /login
+    window.location.href = "/login";
+  }
+});
+
+
+
+
+
+
+
+
+// If user is on /face profile page
+if (window.location.pathname.indexOf("/face/") != -1 && window.location.pathname != "/face/new"){
+  $("#face-form").css("opacity", "0.2");
+  
+  fb.child("hired").child("people").child(name_key).once("value", function(snap){
+    var user_data = snap.val();
+    $("#name").val(user_data.name);
+    $("#position").val(user_data.position);
+    $(".face-photo").css("background-image", "url(" + user_data.photo + ")" );
+    $("#face-form").css("opacity", "1");
+  });
+  
+// IF user is on /face/new page
+} else if (window.location.pathname == "/face/new"){
+  showBody();
+  $("#face-form").css("opacity", "1");
+};
+
+
+
+
+
+
+
+
+
 
 // If login
 if (window.location.pathname == "/login"){
   var name_list = [];
   var name_data = {};
 
+  // Query data store
   fb.child("hired").child("people").once("value", function(snap){
     for (var key in snap.val()) {
 
@@ -84,7 +68,7 @@ if (window.location.pathname == "/login"){
     };
   });
 
-  $('#login-names').autocomplete({
+  $('#login-names').autocomplete({ // Set up autocomplete
     source: name_list,
     minLength: 2
   });
@@ -92,44 +76,24 @@ if (window.location.pathname == "/login"){
 
 
 
-// ## Routing
-// We aren't using real auth here, but if we needed to Firebase has twitter, google, facebook
 
 // Redirect to login if no user is identified.
-
-var showBody = function(){
-  $(".body-content").addClass("u-opacity100");
-};
-
 if (readCookie("name_key") == null && window.location.pathname != "/login"){
-  window.location.href="/login";
-} else {
+  if (window.location.pathname != "/face/new") { // Let them through if /face/new
+    window.location.href="/login";
+  }
+} else { // If auth, show body
   showBody();
 };
 
 
 
 
-
-// ## Global
-var summonModal = function(modal_text){
-  $(".modal-text").text(modal_text);
-  $(".overlay").show();
-  $(".modal").show();
-};
-var dismissModal = function(){
-  $(".overlay").hide();
-  $(".modal").hide();
-}
-
-$(".overlay").on("click", function(){ dismissModal(); });
-$(document).keyup(function(e) { // Dismiss modal on escape
-  if (e.keyCode == 27) { dismissModal(); }
-});
-
-
 // Play
-window.score = 0;
+if (window.location.pathname == "/play"){
+  
+  
+  window.score = 0;
 var faceIds = [
   "v-123123123", "x-123123"
 ];
@@ -206,26 +170,17 @@ var init = function(){ // TODO Only for play
   });
 
 }; init();
-
-
-
-
-
-// ## Login
-
-var loginForm = function(e){
-  event.preventDefault(); // Don't submit lol
-  var person_name = name_data[$("#login-names").val().toLowerCase()];
-
-  // If we can't find a key for that name
-  if (person_name != undefined){
-    // Store user key in cookie
-    // This will be referenced since all over since we aren't using actual auth
-    createCookie("name_key", person_name);
-    window.location.href = "/play"; // Redirect to play
-  } else {
-    summonModal("Oops, we can't find that name.")
-    //TODO put button to add
-  }
-
+  
+  
+  
 };
+
+
+
+
+
+
+
+
+
+

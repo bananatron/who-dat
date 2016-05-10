@@ -1,54 +1,52 @@
 <!doctype html>
 <html class="no-js" lang="">
     <head>
-        <meta charset="utf-8">
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Who Dat?</title>
+      <meta charset="utf-8">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      <title>Who Dat?</title>
 
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Remember your coworkers.">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <!-- Styles -->
-        <link rel="stylesheet" href="/stylesheets/normalize.css">
-        <link rel="stylesheet" href="/stylesheets/styles.css">
-        <link rel="stylesheet" href="/stylesheets/skeleton.css">
-        <link rel="stylesheet" href="/stylesheets/animate.css">
-        <!-- <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"> -->
-        <!-- Fonts -->
-        <!-- <link href='https://fonts.googleapis.com/css?family=Raleway:400,100,200,300,500,600,700,800,900' rel='stylesheet' type='text/css'> -->
-        <!-- <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,700,800,600,300italic' rel='stylesheet' type='text/css'> -->
-        <!-- <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'> -->
+      <!-- Styles -->
+      <link rel="stylesheet" href="/stylesheets/normalize.css">
+      <link rel="stylesheet" href="/stylesheets/styles.css">
+      <link rel="stylesheet" href="/stylesheets/skeleton.css">
+      <link rel="stylesheet" href="/stylesheets/animate.css">
 
+
+      <!-- Fonts -->
+      <!-- <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+      <!-- <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,700,800,600,300italic' rel='stylesheet' type='text/css'> -->
+      <!-- <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'> -->
+      <link href='https://fonts.googleapis.com/css?family=Lato:400,300,700,300italic,100' rel='stylesheet' type='text/css'>
     </head>
     <body>
-        <!--[if lt IE 8]>
-            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
+      <!--[if lt IE 8]>
+        <p class="browserupgrade"><a href="http://browsehappy.com/">Seriously, the browser you're using is so old...</a></p>
+      <![endif]-->
 
-        <%= erb :'partials/nav' %>
+      <%= erb :'partials/nav' %>
 
-        <div class="body-content">
-          <%= yield %>
-        </div>
-
-
-        <div class="overlay"></div>
-        <div class="modal">
-          <div class="modal-text">
-            Whoops...
-          </div>
-        </div>
+      <div class="body-content">
+        <%= yield %>
+      </div>
 
 
-        <!-- <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script> -->
+      <div class="overlay"></div>
+      <div class="modal">
+        <div class="modal-text">Whoops...</div>
+      </div>
 
-        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script> -->
-        <script src="/js/jquery.min.js"></script>
-        <script src="/js/jquery-ui.min.js"></script>
 
-        <!-- <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script> -->
-        <script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
-        <script src="/js/scripts.js"></script>
+      <!-- <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script> -->
+      <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script> -->
+
+      <script src="/js/jquery.min.js"></script>
+      <script src="/js/jquery-ui.min.js"></script>
+
+      <script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
+      <script src="/js/helpers.js"></script>
+      <script src="/js/scripts.js"></script>
     </body>
 </html>

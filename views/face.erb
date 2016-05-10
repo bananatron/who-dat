@@ -1,2 +1,20 @@
 
-<h2><%= name_key %></h2>
+<form class="u-text-center" id="face-form">
+
+  <input id="name" type="text" placeholder="Name" class="input-big"></input><br>
+  <input id="position" type="text" placeholder="Position / Team" class="input-sub"></input>
+  <br><br>
+  <div class="face-photo"></div>
+
+  <br><br>
+
+  <input type="file" accept="image/*" capture="camera" id="file-upload">
+
+  <br><br>
+
+  <button type="submit" class="button-primary" id="save-face" onClick="saveFaceData();">Save</button>
+
+</form>
+
+
+

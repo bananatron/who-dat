@@ -32,7 +32,7 @@ end
 
 # Add a new person
 get '/face/new' do
-  erb :new, layout: true
+  erb :face, layout: true
 end
 
 # Edit existing person
