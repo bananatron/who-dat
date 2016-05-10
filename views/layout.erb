@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Who Dat</title>
+        <title>Who Dat?</title>
 
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -28,15 +28,27 @@
 
         <%= erb :'partials/nav' %>
 
-        <div class="body-container">
-            <div class="body-content">
-              <%= yield %>
-            </div>
+        <div class="body-content">
+          <%= yield %>
         </div>
 
-        <!-- <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script> -->
+
+        <div class="overlay"></div>
+        <div class="modal">
+          <div class="modal-text">
+            Whoops...
+          </div>
+        </div>
+
+
+        <!-- <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script> -->
+
+        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script> -->
         <script src="/js/jquery.min.js"></script>
+        <script src="/js/jquery-ui.min.js"></script>
+
+        <!-- <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script> -->
+        <script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
         <script src="/js/scripts.js"></script>
     </body>
 </html>

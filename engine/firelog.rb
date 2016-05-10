@@ -18,7 +18,7 @@ require 'firebase'
 # $base_uri = 'https://##.firebaseio.com'
 puts "Whoah there - put a firebase url in firestore.rb!" if !$base_uri
 
-$fb_root = Firebase::Client.new($base_uri)
+# $fb_root = Firebase::Client.new($base_uri) # Re-enable if this is used obv
 
 def firelog(data, options={})
   default_options = { priority: 0 }

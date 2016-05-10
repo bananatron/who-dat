@@ -2,11 +2,19 @@
 
 // skeleton.css holds all the global style specific goods
 
-html, body {
-  height: 100%;
+html, body { height: 100%; }
+
+.body-content {
+  opacity: 0;
+  transition: all 0.1s ease-in-out;
 }
 
-.modal, .overlay {display: none;}
+
+
+
+
+
+.modal, .overlay { display: none; }
 .modal {
   background-color: $gray;
   padding: 2rem;
@@ -103,16 +111,6 @@ a { text-decoration: none;}
   margin-bottom: 0rem;
 }
 
-.logo-top { //Planet logo
-  font-size: 2.5rem;
-  line-height: 1rem;
-  float: left;
-  margin-right: 1rem;
-}
-@keyframes sway {
-  50% { -webkit-transform: rotate(200deg); transform:rotate(200deg)}
-  50% { -webkit-transform: rotate(200deg); transform:rotate(200deg)}
-  }
 .logo-top:hover {
   animation:sway 2s ease-in-out infinite;
 }
@@ -125,150 +123,47 @@ a { text-decoration: none;}
 }
 
 
-//LOG Page
-.log-entries {
-  display: flex;
-  flex-direction: column;
-  line-height: 2rem;
-  font-size: 1.4rem;
+
+// Autocomplete jquery UI
+.ui-autocomplete {
+  padding: 0;
+  margin: 0;
 }
-.log-entry {
-  display: flex;
+.ui-menu-item {
+  font-size: 2rem;
+  list-style-type: none;
+  padding: 0.8rem;
+  text-align: left;
+  background-color: #CCC9BF;
+  font-weight: light;
+  width: 335px;
 }
-.log-timestamp, .log-text, .log-status {
-  padding: 1rem 1.5rem;
+.ui-menu-item:nth-child(even){
+  background-color: #BBB7AB;
 }
-.log-status {
-  font-weight: 600;
+.ui-menu-item:hover {
+  font-size: 2rem;
+  list-style-type: none;
+  background-color: $light-blue;
 }
-.log-timestamp {
-  font-weight: 600;
-  min-width: 80px;
-  color: $light-green;
+.ui-helper-hidden-accessible {
+  display: none !important;
 }
 
-@for $i from 0 through 5 {
-  .log-entry--priority#{$i}{
-    color: #fff;
-    animation-delay: #{$i*100}ms;
-    //background-color: lighten( $dark-green, percentage(($i/100)*10) ) !important;
-  }
-}
 
 
 
 //UTILITY HELPERS
-.u-text-center {
-  text-align: center !important;
-}
-.u-color-dark {
-  color: $dark-green !important;
-}
-.u-color-light {
-  color: $light-green !important;
-}
-.u-color-bd {
-  color: $dark-green !important;
-}
-.u-xs-hide, .u-sm-hide, .u-md-hide, .u-lg-hide, .u-xl-hide {
-  display: none;
-}
-.u-pb1 {
-  padding-bottom: 1rem !important;
-}
-.u-mb1 {
-  margin-bottom: 1rem !important;
-}
-.u-mb2 {
-  margin-bottom: 2rem !important;
-}
-.u-mb3 {
-  margin-bottom: 3rem !important;
-}
+.u-text-center { text-align: center !important; }
+.u-opacity100 { opacity: 100 !important; }
+.u-flex { display: flex; }
+.text-big { font-size: 2rem !important; }
+.text-light { font-weight: 100 !important; }
 
-//FLEXXXXXX
-//Parent classes
-.flex-body {
-  display: flex;
-}
-.flex-body-wrap {
-  flex-wrap: wrap;
-}
-
-//Child CLasses
-.flex-child{
-}
-.flex-child-g1 {
-  flex-grow: 1;
-}
-.flex-child-g2 {
-  flex-grow: 2;
-}
-.flex-child-end {
-  align-self: flex-end;
-}
-.flex-child-center {
-  align-self: center;
-}
-
-//GRAPH STYLES
-.ct-series-a .ct-slice-pie {
-  fill: $light-pink
-}
-.ct-series-b .ct-slice-pie {
-  fill: $dark-green
-}
-.ct-series-c .ct-slice-pie {
-  fill: adjust-hue($dark-green, 60)
-}
-.ct-series-d .ct-slice-pie {
-  fill: adjust-hue($dark-green, 120)
-}
-.ct-series-e .ct-slice-pie {
-  fill: adjust-hue($dark-green, 180)
-}
-.ct-series-f .ct-slice-pie {
-  fill: adjust-hue($dark-green, 220)
-}
-.ct-series-g .ct-slice-pie {
-  fill: adjust-hue($dark-green, 280)
-}
-.ct-series-h .ct-slice-pie {
-  fill: adjust-hue($dark-green, 320)
-}
-
-.ct-series-a .ct-bar {
-  stroke: $dark-green
-}
-.ct-series-b .ct-bar {
-  stroke: $light-pink
-}
-.ct-series-c .ct-bar {
-  stroke: adjust-hue($dark-green, 60)
-}
-.ct-series-d .ct-bar {
-  stroke: adjust-hue($dark-green, 120)
-}
-.ct-series-e .ct-bar {
-  stroke: adjust-hue($dark-green, 180)
-}
-.ct-series-f .ct-bar {
-  stroke: adjust-hue($dark-green, 220)
-}
-.ct-series-g .ct-bar {
-  stroke: adjust-hue($dark-green, 280)
-}
-.ct-series-h .ct-bar{
-  stroke: adjust-hue($dark-green, 320)
-}
-.ct-label {
-  font-size: 1.2rem !important;
-}
-.graph-results {
-  height: 320px;
-}
-.graph-container {
-  height: 100%;
+.input-big {
+  height: inherit !important;
+  font-size: 3rem !important;
+  padding: 1rem !important;
 }
 
 
