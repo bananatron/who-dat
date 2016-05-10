@@ -2,9 +2,11 @@
 Know who you work with.
 
 #Startup
-To start: `rackup`
+To serve: `rackup`
 To console: `bundle exec irb -r ./app.rb`
 
 #Stack
-- 🎤Sinatra
-- 🔥Firebase
+- 🎤 Sinatra
+- 🔥 Firebase
+
+`rackup -o 0.0.0.0 -p 8080`
