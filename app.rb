@@ -1,9 +1,5 @@
 require 'sinatra'
 require 'json'
-# require 'nokogiri'
-# require 'open-uri'
-# require 'active_support/all'
-# require 'sinatra/activerecord'
 require 'sanitize'
 require 'pry'
 
