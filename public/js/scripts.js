@@ -21,12 +21,10 @@ $("#profile-link").on("click", function(ee){
 
 
 
-
-
-
 // If user is on /face profile page
 if (window.location.pathname.indexOf("/face/") != -1 && window.location.pathname != "/face/new"){
-  $("#face-form").css("opacity", "0.2");
+  $("#face-form").css("opacity", "0");
+  $(".all-seeing-eye").show();
   
   fb.child("hired").child("people").child(name_key).once("value", function(snap){
     var user_data = snap.val();
@@ -34,6 +32,7 @@ if (window.location.pathname.indexOf("/face/") != -1 && window.location.pathname
     $("#position").val(user_data.position);
     $(".face-photo").css("background-image", "url(" + user_data.photo + ")" );
     $("#face-form").css("opacity", "1");
+    $(".all-seeing-eye").hide();
   });
   
 // IF user is on /face/new page

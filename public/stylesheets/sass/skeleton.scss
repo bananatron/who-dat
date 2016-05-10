@@ -228,8 +228,8 @@ input[type="submit"].button-primary:focus,
 input[type="reset"].button-primary:focus,
 input[type="button"].button-primary:focus {
   color: #FFF;
-  background-color: lighten($dark-green, 10%);
-  border-color: lighten($dark-green, 10%); }
+  background-color: black;
+  border-color: black }
 
 .button.button-small,
 button.button-small,

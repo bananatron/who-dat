@@ -91,7 +91,9 @@
       
       <div class="who" onClick="playGame();">Who</div>
       <div class="dat">Dat</div>
-      <div class="q">?</div>
+      <div class="q">
+        <i class="icon ion-eye"></i>
+      </div>
       <div class="fill"></div>
       
 
@@ -100,7 +102,7 @@
       <script>
         // ? ? ? 
         var ii;
-        for (ii = 0; ii < 10; ii++){
+        for (ii = 0; ii < 6; ii++){
           var qq = $(".q").first().clone();
           qq.css('left', Math.floor(Math.random() * $( window ).width()));
           qq.css('top', Math.floor(Math.random() * $( window ).height()-200));

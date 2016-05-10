@@ -99,6 +99,23 @@ body {
 
 .logo-top:hover { animation:sway 2s ease-in-out infinite; }
 
+.all-seeing-eye {
+  pointer-events: none;
+  display: none;
+  position: fixed;
+  font-size: 20rem;
+  color: $red;
+  left: 48%; top: 48%;
+  background-color: black;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  animation: rotate 2s linear infinite;
+}
+@keyframes rotate {
+  0% { transform: rotate(0deg);}
+  100% { transform: rotate(360deg);}
+}
 
 .nav-button {
   margin: 0 !important;
@@ -116,8 +133,11 @@ a { text-decoration: none; }
   letter-spacing: 1px;
   margin-bottom: 0;
   color: #D05353;
-  padding: 1rem;
+  padding: 1rem 2rem;
   transition: all 0.1s ease-in-out;
+  .ion-eye {
+    color: $gray;
+  }
 }
 .header:hover,
 .header:focus {
@@ -212,7 +232,6 @@ a { text-decoration: none; }
   background-position: center;
   background-image:url('/images/toonspenser.png')
 }
-
 
 
 //UTILITY HELPERS
