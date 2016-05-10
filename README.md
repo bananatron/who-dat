@@ -10,6 +10,3 @@ To console: `bundle exec irb -r ./app.rb`
 - 🔥 Firebase
 
 `rackup -o 0.0.0.0 -p 8080`
-
-
-🐱
