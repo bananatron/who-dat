@@ -26,7 +26,19 @@
         <p class="browserupgrade"><a href="http://browsehappy.com/">Seriously, the browser you're using is so old...</a></p>
       <![endif]-->
 
-      <%= erb :'partials/nav' %>
+      <div class="top">
+        <div class="logo-text">
+          <div class="logo-top">
+            <i class="ion-planet u-sm-hide"></i></div>
+          <a href="/"><h1 class="header">Who Dat</h1></a>
+        </div>
+        <div class="body-navigation u-text-center">
+          <a href="/play" class="button button-trans nav-button">Play</a>
+          <a href="/scores" class="button  button-trans nav-button">Scores</a>
+          <a href="/face" id="profile-link" class="button  button-trans nav-button">Profile</a>
+        </div>
+      </div>
+
 
       <div class="body-content">
         <%= yield %>

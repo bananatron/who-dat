@@ -8,10 +8,7 @@ body {
 	-moz-osx-font-smoothing: grayscale;
 }
 
-.body-content {
-  opacity: 0;
-  transition: all 0.1s ease-in-out;
-}
+
 
 .face-photo {
   width: 335px;
@@ -78,25 +75,28 @@ body {
 .body-navigation {
   justify-content: flex-end;
   display: flex;
+  flex-grow: 1;
 }
 
 .body-content {
   padding: 1rem 2rem;
-  flex-grow: 2;
+  margin-top: 80px;
+  opacity: 0;
+  transition: all 0.1s ease-in-out;
 }
 
+
 .top {
-  margin: 2rem 0;
-  background-color: $color-primary;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  margin: 0.5rem 0;
   padding: 0 1rem;
-  color: #fff !important;
+  color: #D05353 !important;
   display: flex;
   align-items: center;
 }
 
-.logo-text {
-  flex-grow: 1;
-}
 .logo-top:hover { animation:sway 2s ease-in-out infinite; }
 
 
@@ -104,20 +104,25 @@ body {
   margin: 0 !important;
 }
 
-a { text-decoration: none;}
+a { text-decoration: none; }
 .header, .subheader {
   text-transform: uppercase;
   font-weight: bold;
   font-family: 'Montserrat', sans-serif;
-  margin-left: 2rem;
 }
 
 .header {
-  color: $blah-green;
   font-size: 2.5rem;
   letter-spacing: 1px;
   margin-bottom: 0;
-  color: #fff;
+  color: #D05353;
+  padding: 1rem;
+  transition: all 0.1s ease-in-out;
+}
+.header:hover,
+.header:focus {
+  background-color: #D05353;
+  color: $gray;
 }
 .subheader {
   color: $off-green;
@@ -167,12 +172,8 @@ a { text-decoration: none;}
 
 
 // Card Styles
-.card-template {
-  display: none;
-}
-.name-template {
-  display: none;
-}
+.card-template,
+.name-template { display: none; }
 
 .cards-container {
   display: flex;
@@ -200,11 +201,9 @@ a { text-decoration: none;}
 
 .name {
   border: 0;
-  margin: 0;
+  margin: 0 !important;
 }
-.name:hover {
-  background-color: rgba(0, 0, 0, 0.1);
-}
+.name:hover { background-color: rgba(0, 0, 0, 0.1); }
 
 .card-image {
   width: 100%;

@@ -1,1 +1,120 @@
-<h2>Who's you?</h2>
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+      <meta charset="utf-8">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      <title>Who Dat?</title>
+
+      <meta name="description" content="Remember your coworkers.">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+
+      <!-- Styles -->
+      <link rel="stylesheet" href="/stylesheets/normalize.css">
+      <link rel="stylesheet" href="/stylesheets/styles.css">
+      <link rel="stylesheet" href="/stylesheets/skeleton.css">
+      <link rel="stylesheet" href="/stylesheets/animate.css">
+
+      <!-- Fonts -->
+      <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+      <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+      <link href='https://fonts.googleapis.com/css?family=Lato:400,300,700,300italic,100' rel='stylesheet' type='text/css'>
+      
+      <style>
+        body { background-color: #ECECEC; }
+        .who,
+        .dat,
+        .q {
+          letter-spacing: 1px;
+          font-family: 'Montserrat', sans-serif;
+          text-transform: uppercase;
+          font-weight: 800;
+          padding: 0 4rem;
+          position: fixed;
+          bottom: 3rem;
+          transition: all 0.1s ease-in-out;
+        }
+        
+        .who {
+          color: #D05353;
+          cursor: pointer;
+/*           animation: in-right 10s linear infinite alternate; */
+          width: 500px;
+          font-size: calc(2rem + 20vw);
+        }
+        .who:hover,
+        .who:focus {
+          color: rgba(243, 243, 243, 0.7);
+        }
+        .who:hover ~ .dat { z-index: 2; }
+        .who:hover ~ .fill { opacity: 1; }
+        .dat {
+          pointer-events: none;
+          z-index: -1;
+          left: 50%;
+          color: #ECECEC;
+          font-size: calc(0.5rem + 10vw);
+          animation: sway 15s ease-in-out infinite alternate;
+        }
+        .q {
+          pointer-events: none;
+          color: rgba(243, 243, 243, 0.2);
+          font-size: 6rem;
+          right: 1rem;
+          bottom: 1rem;
+          transform: rotate(10deg);
+          z-index: -1;
+          animation: sway 6s linear infinite alternate;
+        }
+        
+        .fill {
+          background-color: #D05353;
+          width: 100%;
+          height: 100%;
+          position: fixed;
+          top: 0; left: 0;
+          opacity: 0;
+          pointer-events: none;
+          z-index: -2;
+          transition: 0.2s ease-in-out;
+        }
+       
+        
+        @keyframes sway {
+          0% { padding-left: 2rem; transform:rotate(0); }
+          100% { padding-left: 6rem; transform:rotate(2deg); }
+        }
+
+      </style>
+      
+    </head>
+    <body>
+      
+      <div class="who" onClick="playGame();">Who</div>
+      <div class="dat">Dat</div>
+      <div class="q">?</div>
+      <div class="fill"></div>
+      
+
+      <script src="/js/jquery.min.js"></script>
+      
+      <script>
+        // ? ? ? 
+        var ii;
+        for (ii = 0; ii < 10; ii++){
+          var qq = $(".q").first().clone();
+          qq.css('left', Math.floor(Math.random() * $( window ).width()));
+          qq.css('top', Math.floor(Math.random() * $( window ).height()-200));
+          qq.css('transform', 'rotate('+ (Math.floor(Math.random() * 180)-60) +'deg)');
+          qq.css('font-size', Math.floor(Math.random() * 40).toString()+"rem");
+          qq.css('animation-duration', Math.floor(Math.random() * 50 + 5) + "s");
+          $("body").append(qq);
+        };
+        
+        
+        var playGame = function(){
+          window.location.href = "/play";
+        };
+      </script>
+      
+    </body>
+</html>

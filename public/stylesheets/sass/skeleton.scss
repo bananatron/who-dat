@@ -239,6 +239,16 @@ input[type="button"].button-small {
   height: 30px;
   line-height: 30px; }
 
+.button-trans,
+input[type="submit"].button-trans,
+input[type="reset"].button-trans,
+input[type="button"].button-trans {
+  outline: 0;
+  border: 0;
+  background-color: rgba(0, 0, 0, 0);
+  color: $red;
+}
+
 /* Forms
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 input[type="email"],

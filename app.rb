@@ -10,7 +10,7 @@ require 'pry'
 ############$
 
 get '/' do
-  erb :index, layout: true
+  erb :index, layout: false
 end
 
 get '/login' do
