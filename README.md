@@ -1,11 +1,11 @@
 # Who Dat
 Know who you work with.
 
-#Startup
+## Startup
 To serve: `rackup`
 To console: `bundle exec irb -r ./app.rb`
 
-#Stack
+## Stack
 - 🎤 Sinatra
 - 🔥 Firebase
 
