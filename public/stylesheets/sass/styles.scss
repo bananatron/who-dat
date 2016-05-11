@@ -265,7 +265,7 @@ a { text-decoration: none; }
 
 //UTILITY HELPERS
 .u-text-center { text-align: center !important; }
-.u-opacity0 { opacity: 0 !important; }
+.u-opacity0 { opacity: 0 !important; pointer-events: none; }
 .u-opacity100 { opacity: 100 !important; }
 .u-flex { display: flex; }
 .text-big { font-size: 2rem !important; }

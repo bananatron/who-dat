@@ -46,11 +46,10 @@ if (window.location.pathname == "/login"){
   var name_data = {};
   
   $("#login-names").on("input", function(){
-    console.log($(this).val())
     if ( $(this).val() != "" ){
-      $(".login-button").addClass("u-opacity100");
+      $(".login-button").removeClass("u-opacity0");
     } else {
-      $(".login-button").removeClass("u-opacity100");
+      $(".login-button").addClass("u-opacity0");
     }
   });
 

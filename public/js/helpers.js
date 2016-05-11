@@ -160,7 +160,7 @@ var loginForm = function(e){
     createCookie("name_key", person_name);
     window.location.href = "/play"; // Redirect to play
   } else {
-    summonModal("Oops, we can't find that name.", { title: "Create an account", url:"/face/new" })
+    summonModal("<h2>Oops</h2> We can't find that name.")
   }
 };
 
