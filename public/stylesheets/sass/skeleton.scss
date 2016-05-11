@@ -182,7 +182,7 @@ input[type="button"] {
   display: inline-block;
   height: 38px;
   padding: 0 30px;
-  color: $dark-green;
+  color: $red-dark;
   text-align: center;
   font-size: 11px;
   font-weight: 600;
@@ -296,7 +296,6 @@ input[type="url"]:focus,
 input[type="password"]:focus,
 textarea:focus,
 select:focus {
-/*   border: 1px solid $dark-green; */
   outline: 0; }
 label,
 legend {

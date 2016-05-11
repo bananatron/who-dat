@@ -8,6 +8,7 @@ body {
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
+
 .block-title {
   text-transform: uppercase;
   font-weight: bold;
@@ -20,7 +21,6 @@ body {
   transition: all 0.1s ease-in-out;
 }
 
-
 .face-photo {
   width: 335px;
   height: 335px;
@@ -30,8 +30,6 @@ body {
   margin: 0 auto;
   border-radius: 3px;
 }
-
-
 
 .modal, .overlay { display: none; }
 .modal {
@@ -161,7 +159,6 @@ a { text-decoration: none; }
   font-weight: bold;
   font-family: 'Montserrat', sans-serif;
 }
-
 .header {
   font-size: 2.5rem;
   letter-spacing: 1px;
@@ -178,51 +175,12 @@ a { text-decoration: none; }
   background-color: #D05353;
   color: $gray;
 }
-.subheader {
-  color: $off-green;
-  font-size: 1.6rem;
-  letter-spacing: 0.5px;
-  margin-top: -0.5rem;
-  margin-left: 0.5rem;
-  margin-bottom: 0rem;
-}
-
-
-
-// Autocomplete jquery UI
-.ui-autocomplete {
-  padding: 0;
-  margin: 0;
-}
-.ui-menu-item {
-  margin: 0;
-  font-size: 2.5rem;
-  list-style-type: none;
-  padding: 0.5rem 1rem;
-  text-align: left;
-  background-color: $red-dark;
-  width: 360px;
-  color: $gray;
-  cursor: pointer;
-
-}
-.ui-menu-item:nth-child(even){
-  background-color: darken($red-dark, 10%);
-}
-.ui-menu-item:hover {
-  list-style-type: none;
-  background-color: black;
-}
-.ui-helper-hidden-accessible {
-  display: none !important;
-}
 
 
 
 // Card Styles
 .card-template,
 .name-template { display: none !important; }
-
 
 .cards-container {
   display: flex;
@@ -251,8 +209,7 @@ a { text-decoration: none; }
 .name {
   border: 0;
   margin: 0 !important;
-}
-.name:hover { background-color: rgba(0, 0, 0, 0.1); }
+} .name:hover { background-color: rgba(0, 0, 0, 0.1); }
 
 .card-image {
   width: 100%;
@@ -262,18 +219,102 @@ a { text-decoration: none; }
   background-image:url($placeholder-image)
 }
 
+// Score styles
+  .score-listing {
+    display: flex;
+    font-weight: bold;
+  }
+  .score-number {
+    text-align: right;
+    margin-right: 2rem;
+    background-color: #D05353;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    display: block;
+    border-radius: 50%;
+    color: white;
+    line-height: 30px;
+    letter-spacing: 0px;
+    font-size: 12px;
+  }
+  .score-name {
+    flex-grow: 1;
+    display: flex;
+  }
+
+  .score-photo {
+    margin-right: 1.5rem;
+    min-width: 40px;
+    height: 40px;
+    background-position: center;
+    background-size: cover;
+  }
+  .score-listing {
+    align-items: center;
+    height: 40px;
+    background-color: rgba(0, 0, 0, 0.05);
+    border-top: 1px solid #D05353;
+    color: #D05353;
+    margin-bottom: 0.5rem;
+    transition: all 0.1s ease-in-out;
+    letter-spacing: 1px;
+  }
+  .score-listing:hover,
+  .score-listing:focus {
+    margin-left: 1rem;
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+  .score-listing-template { display: none; }
+  .score-containers {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+
+
+// Autocomplete jquery UI
+.ui-autocomplete {
+  padding: 0;
+  margin: 0;
+}
+.ui-menu-item {
+  margin: 0;
+  font-size: 2.5rem;
+  list-style-type: none;
+  padding: 0.5rem 1rem;
+  text-align: left;
+  background-color: $red-dark;
+  width: 360px;
+  color: $gray;
+  cursor: pointer;
+}
+.ui-menu-item:nth-child(even){
+  background-color: darken($red-dark, 10%);
+}
+.ui-menu-item:hover {
+  list-style-type: none;
+  background-color: black;
+}
+.ui-helper-hidden-accessible {
+  display: none !important;
+}
+
+
 
 //UTILITY HELPERS
+.u-opacity0 { 
+  opacity: 0 !important; 
+  pointer-events: none; 
+} .u-opacity100 { opacity: 100 !important; }
+
 .u-text-center { text-align: center !important; }
-.u-opacity0 { opacity: 0 !important; pointer-events: none; }
-.u-opacity100 { opacity: 100 !important; }
-.u-flex { display: flex; }
 .text-big { font-size: 2rem !important; }
 .text-sub { font-size: 1.5rem !important; }
-
 .text-light { font-weight: 300 !important; color: rgba(0, 0, 0, 0.5); }
-.u-blur { -webkit-animation: 10s linear 0s infinite alternate blurr; }
 
+.u-flex { display: flex; }
+.u-blur { -webkit-animation: 10s linear 0s infinite alternate blurr; }
 
 @keyframes blurr {
     0% { -webkit-filter: blur(0px); }
@@ -286,7 +327,7 @@ a { text-decoration: none; }
   padding: 1rem !important;
 }
 
-
+//File upload styles
 input[type="file"]{
   display: flex;
   margin: 0 auto;
