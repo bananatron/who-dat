@@ -109,6 +109,8 @@ if (window.location.pathname == "/scores"){
   
   fb.child("hired").child("scores").on("value", function(score_snap){
     $(".score-new").remove();
+    console.log(score_snap.val());
+    
     Object.keys(score_snap.val()).forEach(function(uid){
   
       //Look up score based on uid
@@ -117,6 +119,7 @@ if (window.location.pathname == "/scores"){
         $(".all-seeing-eye").hide();
       });
     });
+    
   });
 
 };
@@ -132,22 +135,25 @@ if (window.location.pathname == "/play"){
   var faceData = [];
   var faceNames = [];
   var faceIndex = 0;
+  var faceKeys = [];
   
   // Fetch user keys
   fb.child("hired").child("people").once("value", function(snap){
     faceData = snap.val();
     delete faceData[name_key];
+    faceKeys = shuffle(Object.keys(faceData));
     
     Object.keys(faceData).forEach(function(uid){
       faceNames.push({name:faceData[uid].name, key:uid});
     });
     $(".all-seeing-eye").hide();
-    createCard(Object.keys(faceData)[faceIndex]);
+    createCard(faceKeys[faceIndex]);
   });
 
 
   // ## Name selection
   var createCard = function(uid){ // Takes firebase person object - key is uid
+    var max_option_count = 6;
 
     var card = $(".card-template").clone();
     card.find(".card-image").css("background-image", "url(" + faceData[uid].photo + ")");
@@ -155,7 +161,7 @@ if (window.location.pathname == "/play"){
 
     var name_options = [{name:faceData[uid].name, key: uid}];
 
-    for (var ii = 0; ii < 5; ii++){
+    for (var ii = 0; ii < max_option_count; ii++){
       var found = false;
       var rand_name = faceNames[Math.floor(Math.random()*faceNames.length)];
       if ((name_options).indexOf(rand_name) == -1){ 
@@ -198,8 +204,7 @@ if (window.location.pathname == "/play"){
         var cc = $(ee.target).closest(".card").addClass("animated bounceOutDown");
         setTimeout(function(){
           cc.hide();
-          console.log(Object.keys(faceData)[faceIndex])
-          if (Object.keys(faceData)[faceIndex] == undefined){ // If there are no faces left
+          if (faceKeys[faceIndex] == undefined){ // If there are no faces left
             var score_path = fb.child("hired").child("scores").child(name_key);
             score_path.once("value", function(snap){
               if (snap.val() == null || snap.val() < window.score ){
@@ -210,7 +215,7 @@ if (window.location.pathname == "/play"){
               summonModal("<h3>You're amazing</h3> You know <i>literally</i> everyone.", {title: "Victory is Mine", url:"/scores"});
             });
           } else { // Show next face
-            createCard(Object.keys(faceData)[faceIndex]);
+            createCard(faceKeys[faceIndex]);
           }
 
         }, 700);
