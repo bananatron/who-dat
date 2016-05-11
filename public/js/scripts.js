@@ -5,21 +5,6 @@ var fb = new Firebase('https://who-is-dat.firebaseio.com');
 if (readCookie("name_key")) var name_key = readCookie("name_key");
 
 
-$("#profile-link").on("click", function(ee){
-  ee.preventDefault();
-
-  if (name_key){ // Profile link will take user to their profile if logged in
-    window.location.href = "/face/" + name_key;
-  } else { // If they aren't logged in, take them to /login
-    window.location.href = "/login";
-  }
-});
-
-$("#logout-button").on("click", function(){
-  eraseCookie("name_key");
-  window.location.href = "/login";
-});
-
 
 
 
@@ -108,20 +93,19 @@ if (window.location.pathname == "/scores"){
   $(".all-seeing-eye").show();
   
   fb.child("hired").child("scores").on("value", function(score_snap){
-    $(".score-new").remove();
-    console.log(score_snap.val());
+    $(".score-new").remove(); // Remove all old isntances
     
-    Object.keys(score_snap.val()).forEach(function(uid){
-  
+    Object.keys(score_snap.val()).forEach(function(uid){ // Go through all score results
+      
       //Look up score based on uid
       fb.child("hired").child("people").child(uid).once("value", function(user_snap){
         createScore(user_snap.val().name, score_snap.val()[uid], user_snap.val().photo);
         $(".all-seeing-eye").hide();
       });
+      
     });
-    
+  
   });
-
 };
 
 
@@ -217,7 +201,6 @@ if (window.location.pathname == "/play"){
           } else { // Show next face
             createCard(faceKeys[faceIndex]);
           }
-
         }, 700);
 
 
@@ -232,11 +215,32 @@ if (window.location.pathname == "/play"){
           summonModal("Oops, that's actually <h4>" + faceData[card_uid].name + "</h4>", { title: "Try Again", url: "/play" });
         });
       };
-
     });
-
   };
-
-
-
 };
+
+
+
+
+// Hacky profile link thing
+$("#profile-link").on("click", function(ee){
+  ee.preventDefault();
+
+  if (name_key){ // Profile link will take user to their profile if logged in
+    window.location.href = "/face/" + name_key;
+  } else { // If they aren't logged in, take them to /login
+    window.location.href = "/login";
+  }
+});
+
+// Logout
+$("#logout-button").on("click", function(){
+  eraseCookie("name_key");
+  window.location.href = "/login";
+});
+
+
+
+var console_style = "font-size: 16px; color:#DA2598; font-family:'monospace';"
+console.log("%chired.com", "color: black; font-family: 'monospace'; font-size: 2rem; font-weight: 800;");
+console.log("%c♥", console_style);
