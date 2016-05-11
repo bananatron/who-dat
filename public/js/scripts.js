@@ -103,18 +103,23 @@ if (readCookie("name_key") == null && window.location.pathname != "/login"){
 
 
 
-// #Play
+// #Scores
 if (window.location.pathname == "/scores"){
+  $(".all-seeing-eye").show();
   
-  fb.child("hired").child("scores").on("value", function(snap){
-    Object.keys(snap.val()).forEach(function(uid){
-      console.log(uid);
+  fb.child("hired").child("scores").on("value", function(score_snap){
+    $(".score-new").remove();
+    Object.keys(score_snap.val()).forEach(function(uid){
+  
+      //Look up score based on uid
+      fb.child("hired").child("people").child(uid).once("value", function(user_snap){
+        createScore(user_snap.val().name, score_snap.val()[uid], user_snap.val().photo);
+        $(".all-seeing-eye").hide();
+      });
     });
   });
-  
-  var createScores()
-  
-}
+
+};
 
 
 

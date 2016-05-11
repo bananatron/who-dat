@@ -8,7 +8,17 @@ body {
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
-
+.block-title {
+  text-transform: uppercase;
+  font-weight: bold;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2.5rem;
+  letter-spacing: 1px;
+  margin-bottom: 0;
+  color: $red-dark;
+  padding: 1rem 2rem;
+  transition: all 0.1s ease-in-out;
+}
 
 
 .face-photo {
@@ -66,12 +76,20 @@ body {
     flex-wrap: wrap;
     flex-direction: row !important;
     justify-content: center;
+    min-width: 50%;
+    padding: 0 1rem !important;
   }
   .body-navigation > a {
     max-width: 40%;
     flex-grow: 1;
     margin: 0.2rem;
+    padding: 0.5rem;
   }
+  .scoreboard-score {
+    left: 5% !important;
+    transform: scale(0.8) !important;
+  }
+  .cards-container {margin-bottom: 80px;}
 }
 
 .body-navigation,
@@ -88,7 +106,6 @@ body {
 
 .body-content {
   padding: 1rem 2rem;
-  margin-top: 80px;
   opacity: 0;
   transition: all 0.1s ease-in-out;
 }
@@ -96,9 +113,7 @@ body {
 .top {
 	background-color: $gray;
   width: 100%;
-  position: fixed;
   top: 0;
-  padding: 0 1rem;
   color: #D05353 !important;
   display: flex;
   align-items: center;
@@ -183,7 +198,7 @@ a { text-decoration: none; }
   margin: 0;
   font-size: 2.5rem;
   list-style-type: none;
-  padding: 1rem 0.5rem;
+  padding: 0.5rem 1rem;
   text-align: left;
   background-color: $red-dark;
   width: 360px;
@@ -286,7 +301,7 @@ input[type="file"]{
 //RESPONSIVE
 /* XS - Larger than mobile */
 @media (min-width: 480px) {
-  .u-xs-hide {display: block;}
+  .u-xs-hide { display: block; }
   .header, .logo-top { //Header on top of every page
     font-size: 4rem;
     line-height: 3.8rem;

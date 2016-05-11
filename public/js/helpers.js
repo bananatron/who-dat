@@ -1,4 +1,10 @@
 
+// Reveal body once all the things are done
+var showBody = function(){
+  $(".body-content").addClass("u-opacity100");
+};
+
+// We aren't using real auth, just cookie storage
 var createCookie = function(name,value,days) {
   if (days) {
     var date = new Date();
@@ -24,14 +30,12 @@ var eraseCookie = function(name) {
   createCookie(name,"",-1);
 };
 
-var showBody = function(){
-  $(".body-content").addClass("u-opacity100");
-};
 
 
 
 
-// ## Global
+// Summon modals from the depths of the underworld
+// ( Also, can include buttons )
 var summonModal = function(modal_text, button_data){
   
   if (button_data){
@@ -53,7 +57,6 @@ var dismissModal = function(){
   };
 };
 
-
 $(".overlay").on("click", function(){ dismissModal(); });
 $(document).keyup(function(e) { // Dismiss modal on escape
   if (e.keyCode == 27) { dismissModal(); }
@@ -61,6 +64,9 @@ $(document).keyup(function(e) { // Dismiss modal on escape
 
 
 
+
+
+// Saves photo
 var savePhoto = function(callback) {
   console.log('File upload starting...');
   var f = document.getElementById('file-upload').files[0];
@@ -101,6 +107,10 @@ var savePhoto = function(callback) {
 };
 
 
+
+
+
+// Saves face data for new and updates to existing users
 var saveFaceData = function(){ // Called from profile update onClick
   event.preventDefault();
 
@@ -137,6 +147,8 @@ var saveFaceData = function(){ // Called from profile update onClick
 
 
 
+
+// Handles login form submission
 var loginForm = function(e){
   event.preventDefault(); // Don't submit lol
   var person_name = name_data[$("#login-names").val().toLowerCase()];
@@ -148,15 +160,14 @@ var loginForm = function(e){
     createCookie("name_key", person_name);
     window.location.href = "/play"; // Redirect to play
   } else {
-    summonModal("Oops, we can't find that name.")
-    //TODO put button to add
+    summonModal("Oops, we can't find that name.", { title: "Create an account", url:"/face/new" })
   }
 };
 
 
+// Shuffles items of array
 function shuffle(array) {
   var currentIndex = array.length, temporaryValue, randomIndex;
-
   // While there remain elements to shuffle...
   while (0 !== currentIndex) {
 
@@ -169,8 +180,21 @@ function shuffle(array) {
     array[currentIndex] = array[randomIndex];
     array[randomIndex] = temporaryValue;
   }
-
   return array;
 };
+
+
+
+// Creates score dom element and appends to container for /scores page
+var createScore = function(name, score, photo){
+  var $score_listing = $(".score-listing-template").clone();
+  $score_listing.find(".score-name").text(name);
+  $score_listing.find(".score-number").text(score);
+  $score_listing.css("order", score);
+  if (photo) $score_listing.find(".score-photo").css("background-image", "url(" + photo + ")")
+  $(".score-containers").append($score_listing);
+  $score_listing.removeClass("score-listing-template").addClass("score-new");
+};
+
 
 
