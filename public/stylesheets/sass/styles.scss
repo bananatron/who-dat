@@ -1,8 +1,9 @@
 @import "colors";
 
+$placeholder-image: "https://67.media.tumblr.com/647b585e927e02ef18c1f88a29b10b8e/tumblr_o7028phQZ11qz4vfso1_500.png";
 // skeleton.css holds all the global style specific goods
 
-html, body { height: 100%; }
+/* html, body { height: 100%; } */
 body {
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
@@ -15,7 +16,7 @@ body {
   height: 335px;
   background-size: cover;
   background-position: center;
-  background-image:url("https://d13yacurqjgara.cloudfront.net/users/813360/screenshots/2462475/screen_shot_2016-01-16_at_6.02.32_pm.png");
+  background-image:url($placeholder-image);
   margin: 0 auto;
   border-radius: 3px;
 }
@@ -31,12 +32,18 @@ body {
   position: fixed;
   left: 50%; top: 50%;
   transform: translateX(-50%) translateY(-50%);
-  z-index: 5;
+  z-index: 11;
   text-align: center;
   box-shadow: 0 10px 50px rgba(0, 0, 0, 0.1);
+  padding-bottom: 60px; // For modal button
+}
+.modal-button {
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 100%;
 }
 .overlay {
-  z-index: 1;
+  z-index: 10;
   position: fixed;
   top: 0; left: 0;
   height: 100%;
@@ -73,6 +80,7 @@ body {
 }
 
 .body-navigation {
+  display: none;
   justify-content: flex-end;
   display: flex;
   flex-grow: 1;
@@ -84,7 +92,6 @@ body {
   opacity: 0;
   transition: all 0.1s ease-in-out;
 }
-
 
 .top {
 	background-color: $gray;
@@ -98,6 +105,16 @@ body {
 	z-index: 2;
 }
 
+.logout {
+  position: fixed;
+  bottom: 0;
+  right: 4rem;
+  transition: all 0.1s ease-in-out;
+  button {
+    height: 40px;
+    margin-bottom: 0 !important;
+  }
+}
 
 .logo-top:hover { animation:sway 2s ease-in-out infinite; }
 
@@ -156,14 +173,6 @@ a { text-decoration: none; }
 }
 
 
-.results { // search.erb - results containers
-  border: 1px solid $dark-green;
-  border-radius: 3px;
-  padding: 1rem;
-  margin-bottom: 3rem;
-}
-
-
 
 // Autocomplete jquery UI
 .ui-autocomplete {
@@ -171,21 +180,23 @@ a { text-decoration: none; }
   margin: 0;
 }
 .ui-menu-item {
-  font-size: 2rem;
+  margin: 0;
+  font-size: 2.5rem;
   list-style-type: none;
-  padding: 0.8rem;
+  padding: 1rem 0.5rem;
   text-align: left;
-  background-color: #CCC9BF;
-  font-weight: light;
-  width: 335px;
+  background-color: $red-dark;
+  width: 360px;
+  color: $gray;
+  cursor: pointer;
+
 }
 .ui-menu-item:nth-child(even){
-  background-color: #BBB7AB;
+  background-color: darken($red-dark, 10%);
 }
 .ui-menu-item:hover {
-  font-size: 2rem;
   list-style-type: none;
-  background-color: $light-blue;
+  background-color: black;
 }
 .ui-helper-hidden-accessible {
   display: none !important;
@@ -195,7 +206,8 @@ a { text-decoration: none; }
 
 // Card Styles
 .card-template,
-.name-template { display: none; }
+.name-template { display: none !important; }
+
 
 .cards-container {
   display: flex;
@@ -232,7 +244,7 @@ a { text-decoration: none; }
   height: 300px;
   background-size: cover;
   background-position: center;
-  background-image:url('/images/toonspenser.png')
+  background-image:url($placeholder-image)
 }
 
 
@@ -257,6 +269,17 @@ a { text-decoration: none; }
   height: inherit !important;
   font-size: 3rem !important;
   padding: 1rem !important;
+}
+
+
+input[type="file"]{
+  display: flex;
+  margin: 0 auto;
+  font-family: 'Montserrat', sans-serif;
+  padding: 0 30px;
+  font-weight: 500;
+  color: $red-dark;
+  font-size: 11px;
 }
 
 

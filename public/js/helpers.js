@@ -32,15 +32,27 @@ var showBody = function(){
 
 
 // ## Global
-var summonModal = function(modal_text){
-  $(".modal-text").text(modal_text);
-  $(".overlay").show();
+var summonModal = function(modal_text, button_data){
+  
+  if (button_data){
+    var a = $("<a></a>").attr("href", button_data.url);
+    var button = $("<button class='button-primary modal-button'></button>").text(button_data.title);
+    a.append(button);
+  };
+
+  $(".modal-text").html(modal_text).append(a);
+  $(".overlay").show(); 
   $(".modal").show();
 };
+
 var dismissModal = function(){
-  $(".overlay").hide();
-  $(".modal").hide();
-}
+  $modal = $(".modal");
+  if ($modal.find("button").length == 0){ // Don't dismiss actionable modals
+    $(".overlay").hide();
+    $(".modal").hide();
+  };
+};
+
 
 $(".overlay").on("click", function(){ dismissModal(); });
 $(document).keyup(function(e) { // Dismiss modal on escape
@@ -94,6 +106,18 @@ var saveFaceData = function(){ // Called from profile update onClick
 
   var name = $("#name").val();
   var position = $("#position").val();
+  
+  // Validations for new
+  if (window.location.pathname == "/face/new") {
+    if (document.getElementById('file-upload').files[0] == undefined){
+      summonModal("<h2>Oops!</h2> You need a photo!")
+      return;
+    };
+    if (name == undefined || name == ""){
+      summonModal("<h2>Whoah there!</h2> You need a name first.")
+      return;
+    };
+  }
 
   if (name_key == undefined){
     // Generate placeholder object (firebase objects can't be blank)
@@ -127,5 +151,26 @@ var loginForm = function(e){
     summonModal("Oops, we can't find that name.")
     //TODO put button to add
   }
-
 };
+
+
+function shuffle(array) {
+  var currentIndex = array.length, temporaryValue, randomIndex;
+
+  // While there remain elements to shuffle...
+  while (0 !== currentIndex) {
+
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+
+    // And swap it with the current element.
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
+
+  return array;
+};
+
+
