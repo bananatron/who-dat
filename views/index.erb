@@ -18,7 +18,7 @@
       <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
       <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
       <link href='https://fonts.googleapis.com/css?family=Lato:400,300,700,300italic,100' rel='stylesheet' type='text/css'>
-      
+
       <style>
         body { background-color: #ECECEC; }
         .who,
@@ -33,7 +33,7 @@
           bottom: 3rem;
           transition: all 0.1s ease-in-out;
         }
-        
+
         .who {
           color: #D05353;
           cursor: pointer;
@@ -57,7 +57,7 @@
         }
         .q {
           pointer-events: none;
-          color: rgba(243, 243, 243, 0.2);
+          color: rgba(236, 236, 236, 0.2);
           font-size: 6rem;
           right: 1rem;
           bottom: 1rem;
@@ -65,7 +65,7 @@
           z-index: -1;
           animation: sway 6s linear infinite alternate;
         }
-        
+
         .fill {
           background-color: #D05353;
           width: 100%;
@@ -77,30 +77,30 @@
           z-index: -2;
           transition: 0.2s ease-in-out;
         }
-       
-        
+
+
         @keyframes sway {
           0% { padding-left: 2rem; transform:rotate(0); }
           100% { padding-left: 6rem; transform:rotate(2deg); }
         }
 
       </style>
-      
+
     </head>
     <body>
-      
+
       <div class="who" onClick="playGame();">Who</div>
       <div class="dat">Dat</div>
       <div class="q">
         <i class="icon ion-eye"></i>
       </div>
       <div class="fill"></div>
-      
+
 
       <script src="/js/jquery.min.js"></script>
-      
+
       <script>
-        // ? ? ? 
+        // ? ? ?
         var ii;
         for (ii = 0; ii < 6; ii++){
           var qq = $(".q").first().clone();
@@ -111,12 +111,12 @@
           qq.css('animation-duration', Math.floor(Math.random() * 50 + 5) + "s");
           $("body").append(qq);
         };
-        
-        
+
+
         var playGame = function(){
           window.location.href = "/play";
         };
       </script>
-      
+
     </body>
 </html>

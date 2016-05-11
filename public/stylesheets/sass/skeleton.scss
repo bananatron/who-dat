@@ -137,7 +137,7 @@ body {
 /* Typography
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 h1, h2, h3, h4, h5, h6 {
-  color: $dark-blue;
+  color: $red-darkest;
 /*   text-transform: uppercase; */
   margin-top: 0;
   margin-bottom: 1rem;
@@ -166,9 +166,9 @@ p {
 /* Links
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 a {
-  color: $blue; }
+  color: $red-dark; }
 a:hover {
-  color: #0FA0CE; }
+  color: black; }
 
 
 /* Buttons

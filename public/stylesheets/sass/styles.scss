@@ -26,7 +26,7 @@ body {
 .modal {
   background-color: $gray;
   padding: 2rem;
-  border-radius: 3px;
+  border-radius: 2px;
   max-width: 600px;
   position: fixed;
   left: 50%; top: 50%;
@@ -67,7 +67,7 @@ body {
   }
 }
 
-.body-navigation, 
+.body-navigation,
 .body-content {
   padding: 1rem;
 }
@@ -87,15 +87,17 @@ body {
 
 
 .top {
+	background-color: $gray;
   width: 100%;
   position: fixed;
   top: 0;
-  margin: 0.5rem 0;
   padding: 0 1rem;
   color: #D05353 !important;
   display: flex;
   align-items: center;
+	z-index: 2;
 }
+
 
 .logo-top:hover { animation:sway 2s ease-in-out infinite; }
 

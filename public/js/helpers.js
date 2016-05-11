@@ -52,6 +52,11 @@ $(document).keyup(function(e) { // Dismiss modal on escape
 var savePhoto = function(callback) {
   console.log('File upload starting...');
   var f = document.getElementById('file-upload').files[0];
+  if (f == undefined){
+    if (callback) callback();
+    return;
+  }
+
   $(".face-photo").addClass("u-blur");
 
   if (f.size > 500000){
@@ -79,18 +84,18 @@ var savePhoto = function(callback) {
     };
   })(f);
   reader.readAsDataURL(f);
-  
+
   if (callback) callback();
 };
 
 
 var saveFaceData = function(){ // Called from profile update onClick
   event.preventDefault();
-  
+
   var name = $("#name").val();
   var position = $("#position").val();
 
-  if (name_key == undefined){ 
+  if (name_key == undefined){
     // Generate placeholder object (firebase objects can't be blank)
     name_key = fb.child("hired").child("people").push({name:'New User'}).toString().split("/").pop();
     // Save cookie name_key
@@ -124,5 +129,3 @@ var loginForm = function(e){
   }
 
 };
-
-

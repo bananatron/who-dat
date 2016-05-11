@@ -9,7 +9,7 @@ if (readCookie("name_key")) var name_key = readCookie("name_key");
 
 $("#profile-link").on("click", function(ee){
   ee.preventDefault();
-  
+
   if (name_key){ // Profile link will take user to their profile if logged in
     window.location.href = "/face/" + name_key;
   } else { // If they aren't logged in, take them to /login
@@ -21,11 +21,13 @@ $("#profile-link").on("click", function(ee){
 
 
 
+
+
 // If user is on /face profile page
 if (window.location.pathname.indexOf("/face/") != -1 && window.location.pathname != "/face/new"){
   $("#face-form").css("opacity", "0");
   $(".all-seeing-eye").show();
-  
+
   fb.child("hired").child("people").child(name_key).once("value", function(snap){
     var user_data = snap.val();
     $("#name").val(user_data.name);
@@ -34,9 +36,10 @@ if (window.location.pathname.indexOf("/face/") != -1 && window.location.pathname
     $("#face-form").css("opacity", "1");
     $(".all-seeing-eye").hide();
   });
-  
+
 // IF user is on /face/new page
 } else if (window.location.pathname == "/face/new"){
+  $("#save-face").text('Lets get this party started')
   showBody();
   $("#face-form").css("opacity", "1");
 };
@@ -90,8 +93,8 @@ if (readCookie("name_key") == null && window.location.pathname != "/login"){
 
 // Play
 if (window.location.pathname == "/play"){
-  
-  
+
+
   window.score = 0;
 var faceIds = [
   "v-123123123", "x-123123"
@@ -169,17 +172,7 @@ var init = function(){ // TODO Only for play
   });
 
 }; init();
-  
-  
-  
+
+
+
 };
-
-
-
-
-
-
-
-
-
-
