@@ -198,3 +198,21 @@ var createScore = function(name, score, photo){
 
 
 
+var findPersonByName = function(person_name){
+  
+  fb.child("hired").child("people").once("value", function(snap){
+    var result_key;
+    var snap_result = snap.val();
+    
+    Object.keys(snap_result).forEach(function(uid){
+      if (snap_result[uid].name.toLowerCase() == person_name.toLowerCase()) { 
+        result_key = uid;
+      };
+    });
+    console.log(result_key || "No user found");
+    
+  });
+};
+
+
+
