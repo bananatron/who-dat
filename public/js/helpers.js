@@ -70,6 +70,7 @@ $(document).keyup(function(e) { // Dismiss modal on escape
 var savePhoto = function(callback) {
   console.log('File upload starting...');
   var f = document.getElementById('file-upload').files[0];
+
   if (f == undefined){
     if (callback) callback();
     return;
@@ -84,6 +85,7 @@ var savePhoto = function(callback) {
 
   var reader = new FileReader();
   reader.onload = (function(theFile) {
+
     return function(e) {
       var filePayload = e.target.result;
       $("#save-face").addClass("u-opacity0");
@@ -98,12 +100,12 @@ var savePhoto = function(callback) {
         $("input").prop('disabled', false);
 
         $(".face-photo").css("background-image", "url(" + filePayload + ")" );
+        if (callback) callback();
       });
     };
   })(f);
   reader.readAsDataURL(f);
 
-  if (callback) callback();
 };
 
 
@@ -139,7 +141,7 @@ var saveFaceData = function(){ // Called from profile update onClick
   fb.child("hired").child("people").child(name_key).child("name").set(name);
   fb.child("hired").child("people").child(name_key).child("position").set(position, function(){
     savePhoto(function(){
-      //After save, redirect to user key profile page
+      // After save, redirect to user key profile page
       window.location.href = "/face/" + name_key
     });
   });
